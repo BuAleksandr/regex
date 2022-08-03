@@ -6,18 +6,20 @@ export default class Validator {
     }
 
     /*
-        валидация на отсутсвие цифр, "_" и "-" в начале строки;
-        валидация на содержание только латиницы, "_" и "-";
-        валидация на отсутсвие цифр, "_" и "-" в конце строки.
+        валидация на отсутсвие цифр, "_" и "-" в начале и конце строки;
     */
-    const conditionOne = /^[^\d_-][\w-]+[^\d_-]$/.test(name);
+    const conditionOne = /^[^\d_-][^\d_-]+$/.test(name);
 
+    /*
+        валидация на содержание только латиницы;
+    */
+    const conditionTwo = /^[a-z]+$/i.test(name);
     /*
         валидация на количество символов от 4 и выше
     */
-    const conditionTwo = /\d{4,}/.test(name);
+    const conditionThree = /\d{4,}/.test(name);
 
-    return (conditionOne && !conditionTwo);
+    return (conditionOne && conditionTwo && !conditionThree);
     }
 
     /*
