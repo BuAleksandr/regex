@@ -8,12 +8,12 @@ export default class Validator {
     /*
         валидация на отсутсвие цифр, "_" и "-" в начале и конце строки;
     */
-    const conditionOne = /^[^\d_-]+$/.test(name);
+    const conditionOne = /^[^\d_-][\w-]*[^\d_-]$/.test(name);
 
     /*
         валидация на содержание только латиницы;
     */
-    const conditionTwo = /^[a-zA-Z]+$/.test(name);
+    const conditionTwo = /^[\w-]+$/.test(name);
     /*
         валидация на количество символов от 4 и выше
     */
